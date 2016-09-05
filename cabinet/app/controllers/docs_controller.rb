@@ -6,7 +6,18 @@ class DocsController < ApplicationController
 	def show
 	end
 
+	def new
+		@doc = Doc.new
+	end
+
 	def create
+		@doc = Doc.new(doc_parms)
+
+		if @doc.save
+			redirect_to @doc
+		else
+			render 'new'
+		end
 	end
 
 	def edit
